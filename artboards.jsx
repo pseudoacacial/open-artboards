@@ -1,14 +1,12 @@
 var doc = app.activeDocument
 var layersets = doc.layerSets
-var selection = doc.selection
 
 function createSmartObject() {
     var idnewPlacedLayer = stringIDToTypeID( 'newPlacedLayer' );
     executeAction(idnewPlacedLayer, undefined, DialogModes.NO);
-
 }
-for (var i = 0; i < layersets.length; i++) {
-    activeDocument.activeLayer = layersets[i];
+while (layersets.length > 0) {
+    activeDocument.activeLayer = layersets[0];
     createSmartObject();
     runMenuItem(stringIDToTypeID('placedLayerEditContents'));
     //we're inside the new file now
